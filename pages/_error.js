@@ -12,9 +12,14 @@ const Page = ({ errorCode, stars }) => {
 Page.getInitialProps = async ({req, res}) => {
   const errorCode = res.statusCode > 200 ? res.statusCode : false
   
-  if (req.url.endsWith('/')) {
-      const newUrl = req.url.substring(0, req.url.length - 1)
-      res.writeHead(303, { Location: newUrl })
+  /*
+    Handling ?= should be solved differently if you use dynamic routing,
+    this will only remove the 404 for those urls.
+  */
+  let urlParts = req.url.split('?')
+  if (urlParts[0].endsWith('/')) {
+      urlParts[0] = urlParts[0].substring(0, urlParts[0].length - 1)
+      res.writeHead(303, { Location: urlParts.join('?') })
       res.end()
   }
 
