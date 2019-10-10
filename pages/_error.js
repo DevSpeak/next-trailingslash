@@ -19,7 +19,7 @@ Page.getInitialProps = async ({req, res}) => {
   let urlParts = req.url.split('?')
   if (urlParts[0].endsWith('/')) {
       urlParts[0] = urlParts[0].substring(0, urlParts[0].length - 1)
-      res.writeHead(303, { Location: urlParts.join('?') })
+      res.writeHead(301, { Location: urlParts.join('?') })
       res.end()
   }
 
