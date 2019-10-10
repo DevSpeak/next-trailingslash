@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "next"
+    "dev": "next",
+    "start": "next start",
+    "build": "next build"
   },
   "dependencies": {
     "next": "^9.1.1",
